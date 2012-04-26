@@ -11,6 +11,8 @@ This is an example of how Rossie works:
 
 This is not a standard REPL and Rossie does not keep any state.
 
+You can read this (http://blog.filipekberg.se/2011/12/08/hosted-execution-of-smaller-code-snippets-with-roslyn/) blog post about how I created this.
+
 [TODO]
 * Add comments
 * Break out minor parts of the compilation,execution and validation step.
