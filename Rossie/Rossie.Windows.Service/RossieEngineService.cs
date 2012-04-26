@@ -21,9 +21,9 @@ namespace Rossie.Windows.Service
 
                 EventLog.WriteEntry("RossieEngineService", "Starting Command Server", EventLogEntryType.Information);
 
-var thread = new Thread(CommandServer.Start);
+                var thread = new Thread(CommandServer.Start);
 
-thread.Start();
+                thread.Start();
             }
             catch (Exception ex)
             {

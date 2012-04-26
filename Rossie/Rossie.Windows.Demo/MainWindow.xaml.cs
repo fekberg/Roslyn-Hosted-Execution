@@ -21,22 +21,22 @@ namespace Rossie.Windows.Demo
         {
             RunInSandbox(InputCode.Text);
         }
-private static readonly Uri ServiceUri = new Uri("net.pipe://localhost/Pipe");
-private const string PipeName = "RossieEngineService";
-private static readonly EndpointAddress ServiceAddress = new EndpointAddress(string.Format(CultureInfo.InvariantCulture, "{0}/{1}", ServiceUri.OriginalString, PipeName));
-private static ICommandService _serviceProxy;
+        private static readonly Uri ServiceUri = new Uri("net.pipe://localhost/Pipe");
+        private const string PipeName = "RossieEngineService";
+        private static readonly EndpointAddress ServiceAddress = new EndpointAddress(string.Format(CultureInfo.InvariantCulture, "{0}/{1}", ServiceUri.OriginalString, PipeName));
+        private static ICommandService _serviceProxy;
 
-private static void StartCodeService()
-{
-    var service = new ServiceController("Rossie Engine Service");
-    if (service.Status != ServiceControllerStatus.Running)
-    {
-        service.Start();
+        private static void StartCodeService()
+        {
+            var service = new ServiceController("Rossie Engine Service");
+            if (service.Status != ServiceControllerStatus.Running)
+            {
+                service.Start();
 
-        service.WaitForStatus(ServiceControllerStatus.Running);
-    }
-    _serviceProxy = ChannelFactory<ICommandService>.CreateChannel(new NetNamedPipeBinding(), ServiceAddress);
-}
+                service.WaitForStatus(ServiceControllerStatus.Running);
+            }
+            _serviceProxy = ChannelFactory<ICommandService>.CreateChannel(new NetNamedPipeBinding(), ServiceAddress);
+        }
 
         private void RunInSandbox(string code)
         {
